@@ -8,10 +8,14 @@ if r.status_code != 200:
 
 lista_general = r.json()
 lista_criptos = []
+
 for item in lista_general:
     if item["type_is_crypto"] == 1:
         lista_criptos.append(item['asset_id'])
-#
+
+
+print("moneda digital:",len(lista_criptos))
+print("moneda digital:",len(lista_general) -len(lista_criptos))
 moneda_cripto = input('Ingrese una criptomoneda conocida: ').upper()
 
 while moneda_cripto != "" and moneda_cripto.isalpha():
@@ -29,4 +33,4 @@ while moneda_cripto != "" and moneda_cripto.isalpha():
             print("{:,.2f}€".format(resultado['rate']))#.replace(',','.')
         else:
             print(resultado['error'])
-        moneda_cripto = input('Ingrese una criptomoneda conocida: ').upper()
+    moneda_cripto = input('Ingrese una criptomoneda conocida: ').upper()
